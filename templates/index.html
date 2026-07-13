@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Email Detector</title>
+</head>
+
+<body>
+
+    <h1>📧 Spam Email Detector</h1>
+
+    <form action="/predict" method="POST">
+
+        <textarea
+            name="email"
+            rows="10"
+            cols="60"
+            placeholder="Paste your email here..."
+            required>{{ email if email else "" }}</textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Check Email
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+        <hr>
+
+        <h2>Prediction Result</h2>
+
+        <h3>{{ prediction }}</h3>
+
+    {% endif %}
+
+</body>
+
+</html>
