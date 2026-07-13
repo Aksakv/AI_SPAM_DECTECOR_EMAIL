@@ -15,10 +15,14 @@ def predict():
 
     prediction, confidence= predict_email(email)
 
+    print("Email:", email)
+    print("Prediction:", prediction)
+    print("Confidence:", confidence)
     save_prediction(email, prediction, confidence)
+    prediction_text = "Ham" if prediction == 0 else "Spam"
     
     return render_template(
-        "index.html",
+        "result.html",
         prediction=prediction,
         confidence=confidence,
         email=email

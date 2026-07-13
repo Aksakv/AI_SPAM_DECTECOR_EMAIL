@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Email Detection Result</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            width:700px;
+            background:#fff;
+            border-radius:15px;
+            padding:35px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        h1{
+            text-align:center;
+            color:#333;
+            margin-bottom:25px;
+        }
+
+        .result{
+            text-align:center;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:25px;
+        }
+
+        .spam{
+            background:#ffe5e5;
+            color:#c62828;
+            border:2px solid #ef5350;
+        }
+
+        .ham{
+            background:#e8f5e9;
+            color:#2e7d32;
+            border:2px solid #66bb6a;
+        }
+
+        .email-box{
+            background:#f5f5f5;
+            padding:15px;
+            border-radius:10px;
+            border:1px solid #ddd;
+            margin:20px 0;
+            word-wrap:break-word;
+        }
+
+        .info{
+            font-size:18px;
+            margin:12px 0;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 25px;
+            background:#4CAF50;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#388e3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📧 Spam Email Detector</h1>
+
+    <div class="result {% if prediction == 'Spam' %}spam{% else %}ham{% endif %}">
+
+        {% if prediction == 'Spam' %}
+            <h2>⚠️ Spam Email Detected</h2>
+        {% else %}
+            <h2>✅ Safe Email (Ham)</h2>
+        {% endif %}
+
+        <p class="info"><strong>Prediction:</strong> {{ prediction }}</p>
+
+        <p class="info">
+            <strong>Confidence:</strong> {{ confidence }}%
+        </p>
+
+    </div>
+
+    <h3>Email Content</h3>
+
+    <div class="email-box">
+        {{ email }}
+    </div>
+
+    <center>
+        <a href="/" class="btn">🔙 Check Another Email</a>
+    </center>
+
+</div>
+
+</body>
+</html>
